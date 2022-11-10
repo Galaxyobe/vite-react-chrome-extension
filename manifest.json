@@ -1,0 +1,41 @@
+{
+  "manifest_version": 3,
+  "name": "CRXJS React Vite Example",
+  "version": "0.1.0",
+  "icons": {
+    "16": "yyds.png",
+    "32": "yyds.png",
+    "48": "yyds.png",
+    "128": "yyds.png"
+  },
+  "action": {
+    "default_popup": "index.html"
+  },
+  "content_scripts": [
+    {
+      "js": [
+        "src/content-scripts/main.tsx"
+      ],
+      "matches": [
+        "https://*.google.com/*"
+      ],
+      "run_at": "document_end"
+    }
+  ],
+  "permissions": [
+    "background",
+    "tabs",
+    "bookmarks",
+    "unlimitedStorage"
+  ],
+  "host_permissions": [
+    "<all_urls>",
+    "http://*/*",
+    "https://*/*"
+  ],
+  "background": {
+    "service_worker": "src/background.ts",
+    "type": "module"
+  },
+  "options_page": "src/options/index.html"
+}
